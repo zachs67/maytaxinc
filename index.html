@@ -1,154 +1,421 @@
-<!-- Utility Bar -->
-<div class="bg-white border-b">
-  <div class="max-w-6xl mx-auto px-6 py-2 flex flex-wrap items-center justify-between text-sm">
-    <div class="flex gap-4 text-slate-700">
-      <span>📞 (xxx) xxx-xxxx</span>
-      <a class="hover:underline" href="#consult">Book Appointment</a>
-      <a class="hover:underline" href="#upload">Send a File</a>
-      <a class="hover:underline" href="#pay">Make a Payment</a>
-      <a class="hover:underline" href="#contact">Contact</a>
-    </div>
-    <div class="flex gap-3 text-slate-500">
-      <a href="#">f</a><a href="#">g</a><a href="#">in</a>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>May Tax Inc | Accounting & Tax Advisors</title>
+  <meta name="description" content="Tax preparation, bookkeeping, and advisory for individuals & small businesses. Request a free consultation." />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --bg2:#0a0f1a;
+      --card:#0f1b2f;
+      --text:#0f172a;
+      --muted:#64748b;
+      --white:#fff;
+      --line:rgba(255,255,255,.14);
+      --gold:#b08a3b;
+      --gold2:#c89b3c;
+      --max:1100px;
+      --radius:14px;
+      --shadow: 0 18px 60px rgba(0,0,0,.25);
+      --shadow2: 0 10px 30px rgba(0,0,0,.18);
+      --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:var(--sans);color:#0b1220;background:#fff;line-height:1.5}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+    .utility{
+      background:#fff;border-bottom:1px solid #e5e7eb;font-size:13px;color:#334155
+    }
+    .utility .row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 0;flex-wrap:wrap}
+    .utility .left{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+    .utility .left a:hover{text-decoration:underline}
+    .utility .social{display:flex;gap:10px;color:#64748b}
+    .utility .pill{display:inline-flex;align-items:center;gap:8px}
+    .nav{
+      background:#111827;color:#e5e7eb;position:sticky;top:0;z-index:50;
+      box-shadow:0 4px 18px rgba(0,0,0,.22)
+    }
+    .nav .row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:14px}
+    .brand{
+      display:flex;flex-direction:column;line-height:1.1
+    }
+    .brand .name{font-family:var(--serif);font-weight:700;letter-spacing:.3px;color:#fff;font-size:20px}
+    .brand .tag{font-size:12px;color:#cbd5e1}
+    .menu{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+    .menu a{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#e5e7eb;opacity:.92}
+    .menu a:hover{opacity:1;color:#fff}
+    .cta{
+      background:var(--gold);color:#fff;border-radius:10px;padding:10px 14px;
+      font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:12px
+    }
+    .cta:hover{background:var(--gold2)}
+    .hero{
+      position:relative;min-height:540px;display:flex;align-items:stretch;overflow:hidden
+    }
+    .hero::before{
+      content:"";position:absolute;inset:0;
+      background:url("https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=2200&q=70") center/cover no-repeat;
+      transform:scale(1.02);
+    }
+    .hero::after{
+      content:"";position:absolute;inset:0;background:rgba(0,0,0,.42);
+    }
+    .hero .inner{position:relative;width:100%;padding:70px 0 56px}
+    .hero h1{
+      margin:0;font-family:var(--serif);font-size:52px;line-height:1.05;color:#fff;
+      letter-spacing:.2px
+    }
+    .hero h1 small{display:block;font-family:var(--sans);font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:#f1f5f9;margin-top:14px}
+    .hero .btn{
+      display:inline-block;margin-top:18px;background:var(--gold);color:#fff;
+      padding:12px 18px;border-radius:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:12px
+    }
+    .hero .btn:hover{background:var(--gold2)}
+    .consultbar{
+      margin-top:28px;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.15);
+      border-radius:12px;padding:16px;max-width:980px
+    }
+    .consultbar .title{color:#fff;font-weight:700;margin-bottom:12px;font-family:var(--serif);font-size:18px}
+    .formgrid{display:grid;grid-template-columns: 1fr 1fr 1fr auto;gap:10px}
+    .formgrid input{
+      width:100%;border:0;border-radius:10px;padding:12px 12px;font-size:14px;
+      outline:none
+    }
+    .formgrid button{
+      border:0;border-radius:10px;background:var(--gold);color:#fff;
+      padding:12px 18px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:12px;cursor:pointer
+    }
+    .formgrid button:hover{background:var(--gold2)}
+
+    /* About block */
+    .about{padding:64px 0;background:#fff}
+    .about .grid{display:grid;grid-template-columns: 420px 1fr;gap:34px;align-items:center}
+    .photoStack{
+      position:relative;max-width:420px
+    }
+    .photoStack::before{
+      content:"";position:absolute;left:-14px;top:-14px;width:160px;height:160px;background:var(--gold);
+      z-index:0;border-radius:8px
+    }
+    .photoStack img{
+      position:relative;z-index:1;width:100%;border-radius:12px;box-shadow:var(--shadow2);
+      border:1px solid #e5e7eb
+    }
+    .about h2{margin:0;font-family:var(--serif);font-size:26px;color:#0f172a}
+    .about p{color:#475569;margin:12px 0 0;font-size:14px}
+    .about .callout{margin-top:12px;color:#334155;font-size:13px}
+    .about .callout strong{color:#0f172a}
+
+    /* Services block */
+    .services{
+      background:linear-gradient(135deg, #0a0f1a 0%, #111827 55%, #0a0f1a 100%);
+      padding:74px 0;color:#e5e7eb
+    }
+    .services .kicker{
+      text-align:center;color:var(--gold2);letter-spacing:.22em;text-transform:uppercase;font-size:11px
+    }
+    .services h2{
+      text-align:center;margin:10px 0 0;font-family:var(--serif);font-size:34px;color:#fff
+    }
+    .cards{
+      margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px
+    }
+    .card{
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:14px;background:rgba(255,255,255,.03);
+      padding:22px;min-height:168px
+    }
+    .icon{
+      width:38px;height:38px;border-radius:10px;background:rgba(176,138,59,.16);
+      display:grid;place-items:center;color:var(--gold2);font-weight:900
+    }
+    .card h3{
+      margin:14px 0 0;font-family:var(--serif);color:#fff;font-size:18px
+    }
+    .card p{margin:10px 0 0;color:#cbd5e1;font-size:13px}
+    .card a{display:inline-block;margin-top:12px;color:var(--gold2);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+    .card a:hover{text-decoration:underline}
+
+    /* Industry block */
+    .industry{padding:64px 0;background:#fff}
+    .industry .grid{display:grid;grid-template-columns: 1fr 520px;gap:34px;align-items:center}
+    .industry .kicker{color:var(--gold);letter-spacing:.22em;text-transform:uppercase;font-size:11px}
+    .industry h2{margin:10px 0 0;font-family:var(--serif);font-size:30px}
+    .industry p{margin:12px 0 0;color:#475569;font-size:14px}
+    .industry .btn2{
+      display:inline-block;margin-top:18px;background:var(--gold);color:#fff;border-radius:10px;padding:12px 16px;
+      font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:12px
+    }
+    .industry .btn2:hover{background:var(--gold2)}
+    .industry img{width:100%;border-radius:12px;border:1px solid #e5e7eb;box-shadow:var(--shadow2)}
+
+    /* Footer */
+    footer{background:#0b1220;color:#cbd5e1}
+    footer .grid{display:grid;grid-template-columns: 1.2fr 1fr 1fr;gap:26px;padding:54px 0}
+    footer h4{margin:0;color:#fff;font-family:var(--serif);font-size:16px;letter-spacing:.02em}
+    footer p{margin:10px 0 0;color:#cbd5e1;font-size:13px}
+    .footline{border-top:1px solid rgba(255,255,255,.14)}
+    .copy{padding:14px 0;font-size:12px;color:#94a3b8;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+    .newsletter{display:flex;gap:10px;margin-top:12px}
+    .newsletter input{flex:1;border:0;border-radius:10px;padding:12px 12px}
+    .newsletter button{border:0;border-radius:10px;background:var(--gold);color:#fff;padding:12px 14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:12px;cursor:pointer}
+    .newsletter button:hover{background:var(--gold2)}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .formgrid{grid-template-columns: 1fr 1fr; }
+      .formgrid button{grid-column: 1 / -1}
+      .about .grid{grid-template-columns: 1fr; }
+      .industry .grid{grid-template-columns: 1fr; }
+      .cards{grid-template-columns: 1fr 1fr;}
+      footer .grid{grid-template-columns: 1fr;}
+      .hero h1{font-size:42px}
+    }
+    @media (max-width: 560px){
+      .cards{grid-template-columns: 1fr;}
+      .hero h1{font-size:36px}
+      .menu{display:none;} /* keep it simple; add a mobile menu later */
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Utility Bar -->
+  <div class="utility">
+    <div class="container">
+      <div class="row">
+        <div class="left">
+          <span class="pill">📞 <strong>(201) 555-0123</strong></span>
+          <a href="#consult">Book Appointment</a>
+          <a href="#upload">Send a File</a>
+          <a href="#pay">Make a Payment</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="social" aria-label="social links">
+          <a href="#" title="Facebook">f</a>
+          <a href="#" title="Google">G</a>
+          <a href="#" title="LinkedIn">in</a>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Main Nav -->
-<header class="bg-slate-900 sticky top-0 z-50">
-  <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
-    <div class="text-white font-semibold tracking-wide">YOUR FIRM NAME</div>
-    <nav class="hidden md:flex items-center gap-6 text-sm text-slate-200">
-      <a class="hover:text-white" href="#home">Home</a>
-      <a class="hover:text-white" href="#services">Accounting Services</a>
-      <a class="hover:text-white" href="#serve">Who We Serve</a>
-      <a class="hover:text-white" href="#pricing">Pricing Packages</a>
-      <a class="hover:text-white" href="#about">About</a>
-      <a class="px-4 py-2 rounded bg-amber-600 text-white hover:bg-amber-500" href="#consult">
-        Free Consultation
-      </a>
-    </nav>
-  </div>
-</header>
+  <!-- Main Nav -->
+  <header class="nav">
+    <div class="container">
+      <div class="row">
+        <div class="brand">
+          <div class="name">MAY TAX INC</div>
+          <div class="tag">Accounting & Tax Advisors</div>
+        </div>
 
-<!-- Hero -->
-<section id="home" class="relative">
-  <div
-    class="min-h-[520px] bg-cover bg-center"
-    style="background-image:url('YOUR-HERO-IMAGE.jpg')"
-  >
-    <div class="absolute inset-0 bg-black/45"></div>
+        <nav class="menu" aria-label="primary navigation">
+          <a href="#home">Home</a>
+          <a href="#services">Accounting Services</a>
+          <a href="#serve">Who We Serve</a>
+          <a href="#pricing">Pricing Packages</a>
+          <a href="#about">About Us</a>
+          <a class="cta" href="#consult">Free Consultation</a>
+        </nav>
 
-    <div class="relative max-w-6xl mx-auto px-6 py-16">
-      <div class="max-w-xl text-white">
-        <h1 class="text-4xl md:text-5xl font-semibold leading-tight">
-          Take Hold<br class="hidden md:block" /> of Higher Profits
+        <a class="cta" href="#consult" style="display:none" id="mobileCta">Free Consultation</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home" aria-label="hero">
+    <div class="inner">
+      <div class="container">
+        <h1>
+          Take Hold <br /> of Higher Profits
+          <small>Tax • Accounting • Advisory</small>
         </h1>
-        <p class="mt-4 text-slate-100">
-          Tax planning, bookkeeping, and advisory for individuals & small businesses.
-        </p>
-        <div class="mt-6">
-          <a class="inline-block px-5 py-3 bg-amber-600 rounded text-white hover:bg-amber-500" href="#services">
-            Learn More
-          </a>
-        </div>
-      </div>
 
-      <!-- Inline Consultation Form -->
-      <div id="consult" class="mt-10 bg-white/95 backdrop-blur rounded-xl p-5 max-w-4xl">
-        <div class="font-semibold text-slate-900">Request a Free Consultation</div>
-        <div class="mt-4 grid grid-cols-1 md:grid-cols-4 gap-3">
-          <input class="border rounded-lg px-3 py-2" placeholder="Name" />
-          <input class="border rounded-lg px-3 py-2" placeholder="Phone Number" />
-          <input class="border rounded-lg px-3 py-2 md:col-span-1" placeholder="Email Address" />
-          <button class="rounded-lg px-4 py-2 bg-amber-600 text-white hover:bg-amber-500">
-            Submit
-          </button>
+        <a class="btn" href="#services">Learn More</a>
+
+        <div class="consultbar" id="consult">
+          <div class="title">Request a Free Consultation</div>
+          <form class="formgrid" onsubmit="return handleLead(event)">
+            <input name="name" placeholder="Name" required />
+            <input name="phone" placeholder="Phone Number" required />
+            <input name="email" placeholder="Email Address" type="email" required />
+            <button type="submit">Submit</button>
+          </form>
+          <div style="margin-top:10px;color:#e2e8f0;font-size:12px;opacity:.9" id="formMsg"></div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- About -->
-<section id="about" class="py-16 bg-white">
-  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
-    <div class="rounded-2xl overflow-hidden border">
-      <img class="w-full h-full object-cover" src="YOUR-ABOUT-IMAGE.jpg" alt="" />
-    </div>
-    <div>
-      <h2 class="text-2xl md:text-3xl font-semibold">CPA Accounting – Your City, ST</h2>
-      <p class="mt-4 text-slate-600">
-        Short intro about who you help + what you do. Keep it tight and confident.
-      </p>
-      <p class="mt-3 text-slate-600">
-        Mention planning, compliance, and year-round support.
-      </p>
-    </div>
-  </div>
-</section>
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="grid">
+        <div class="photoStack">
+          <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?auto=format&fit=crop&w=1200&q=70" alt="Accounting meeting" />
+        </div>
 
-<!-- Services -->
-<section id="services" class="py-16 bg-slate-900">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center text-slate-200">
-      <div class="text-xs tracking-widest uppercase text-amber-400">Over X Years of Experience</div>
-      <h2 class="mt-2 text-3xl font-semibold text-white">Our Accounting Services</h2>
-    </div>
-
-    <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Card -->
-      <div class="border border-slate-700 rounded-2xl p-7 bg-slate-900/40">
-        <div class="text-amber-400 text-2xl">📊</div>
-        <h3 class="mt-4 text-white font-semibold">Small Business Accounting</h3>
-        <p class="mt-2 text-slate-300">Clean books, monthly reporting, and clear next steps.</p>
-      </div>
-      <!-- Repeat 5 more -->
-    </div>
-  </div>
-</section>
-
-<!-- Industry -->
-<section id="serve" class="py-16 bg-white">
-  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
-    <div>
-      <div class="text-xs tracking-widest uppercase text-amber-700">Serving Various Types of Businesses</div>
-      <h2 class="mt-2 text-3xl font-semibold">Accounting by Industry</h2>
-      <p class="mt-4 text-slate-600">List a few industries you serve and what outcomes you deliver.</p>
-      <a class="mt-6 inline-block px-5 py-3 bg-amber-600 rounded text-white hover:bg-amber-500" href="#contact">
-        Industries We Serve
-      </a>
-    </div>
-    <div class="rounded-2xl overflow-hidden border">
-      <img class="w-full h-full object-cover" src="YOUR-INDUSTRY-IMAGE.jpg" alt="" />
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer id="contact" class="bg-slate-950 text-slate-300">
-  <div class="max-w-6xl mx-auto px-6 py-14 grid md:grid-cols-3 gap-10">
-    <div>
-      <div class="text-white font-semibold">About</div>
-      <p class="mt-3 text-sm">2–3 sentences about your firm.</p>
-    </div>
-    <div>
-      <div class="text-white font-semibold">Contact</div>
-      <p class="mt-3 text-sm">📞 (xxx) xxx-xxxx</p>
-      <p class="text-sm">📍 Your Address</p>
-      <p class="text-sm">✉️ you@email.com</p>
-    </div>
-    <div>
-      <div class="text-white font-semibold">Newsletter</div>
-      <div class="mt-3 flex gap-2">
-        <input class="w-full rounded-lg px-3 py-2 text-slate-900" placeholder="Email Address" />
-        <button class="rounded-lg px-4 py-2 bg-amber-600 text-white">Submit</button>
+        <div>
+          <h2>CPA Accounting – Your City, NJ</h2>
+          <p>
+            May Tax Inc helps individuals and small businesses stay compliant, reduce tax liability,
+            and make confident financial decisions. From year-round tax planning to clean bookkeeping
+            and advisory support, we keep your finances organized and stress-free.
+          </p>
+          <p>
+            Expect clear communication, accurate work, and proactive guidance—so you always know what’s next.
+          </p>
+          <div class="callout">
+            <strong>Call:</strong> (201) 555-0123 &nbsp;•&nbsp;
+            <strong>Email:</strong> info@maytaxinc.com
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="border-t border-slate-800">
-    <div class="max-w-6xl mx-auto px-6 py-4 text-xs text-slate-400">
-      © 2026 Your Firm. All rights reserved.
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="kicker">Over 20 years of experience</div>
+      <h2>Our Accounting Services</h2>
+
+      <div class="cards">
+        <div class="card">
+          <div class="icon">📊</div>
+          <h3>Small Business Accounting</h3>
+          <p>Monthly bookkeeping, reconciliations, reporting, and clean books you can trust.</p>
+          <a href="#contact">Learn more →</a>
+        </div>
+
+        <div class="card">
+          <div class="icon">🧾</div>
+          <h3>Tax Planning</h3>
+          <p>Proactive strategies to minimize surprises and improve after-tax outcomes.</p>
+          <a href="#contact">Learn more →</a>
+        </div>
+
+        <div class="card">
+          <div class="icon">🎯</div>
+          <h3>Who We Serve</h3>
+          <p>Individuals, contractors, and small businesses who want year-round support.</p>
+          <a href="#serve">Learn more →</a>
+        </div>
+
+        <div class="card">
+          <div class="icon">$</div>
+          <h3>Cash Flow Management</h3>
+          <p>Know where money is going and what you can afford—before decisions are made.</p>
+          <a href="#contact">Learn more →</a>
+        </div>
+
+        <div class="card">
+          <div class="icon">👤</div>
+          <h3>Business Consulting</h3>
+          <p>Decision-ready insight for growth, forecasting, and financial operations.</p>
+          <a href="#contact">Learn more →</a>
+        </div>
+
+        <div class="card">
+          <div class="icon">💼</div>
+          <h3>Outsourced Controller</h3>
+          <p>Higher-level oversight, closing support, and process improvements when you need it.</p>
+          <a href="#contact">Learn more →</a>
+        </div>
+      </div>
     </div>
-  </div>
-</footer>
+  </section>
+
+  <!-- Industry -->
+  <section class="industry" id="serve">
+    <div class="container">
+      <div class="grid">
+        <div>
+          <div class="kicker">Serving various types of businesses</div>
+          <h2>Accounting by Industry</h2>
+          <p>
+            We support a range of industries including professional services, construction, retail,
+            real estate, and e-commerce. Our approach adapts to how you operate—so reporting and tax planning
+            match your reality.
+          </p>
+          <a class="btn2" href="#contact">Industries We Serve</a>
+        </div>
+
+        <div>
+          <img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=1400&q=70" alt="Industry clients" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container">
+      <div class="grid">
+        <div>
+          <h4>About</h4>
+          <p>
+            May Tax Inc provides accounting, tax, and advisory services for individuals and small businesses.
+            We focus on accuracy, proactive planning, and clear communication—year round.
+          </p>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <p>📞 (201) 555-0123</p>
+          <p>📍 Your Address Line, City, NJ ZIP</p>
+          <p>✉️ info@maytaxinc.com</p>
+        </div>
+
+        <div>
+          <h4>Newsletter</h4>
+          <p>Get practical tax tips and deadlines (no spam).</p>
+          <form class="newsletter" onsubmit="return handleNewsletter(event)">
+            <input type="email" placeholder="Email Address" required />
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="footline">
+      <div class="container">
+        <div class="copy">
+          <div>© <span id="year"></span> May Tax Inc. All rights reserved.</div>
+          <div><a href="#" style="text-decoration:underline; color:#cbd5e1">Privacy</a> • <a href="#home" style="text-decoration:underline; color:#cbd5e1">Home</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function handleLead(e){
+      e.preventDefault();
+      const form = e.target;
+      const data = Object.fromEntries(new FormData(form).entries());
+      // Replace with your form handler (Formspree, Netlify forms, custom API, etc.)
+      document.getElementById("formMsg").textContent =
+        "Thanks! We received your request and will contact you shortly.";
+      form.reset();
+      console.log("Lead:", data);
+      return false;
+    }
+
+    function handleNewsletter(e){
+      e.preventDefault();
+      e.target.reset();
+      alert("Thanks for subscribing!");
+      return false;
+    }
+  </script>
+</body>
+</html>
