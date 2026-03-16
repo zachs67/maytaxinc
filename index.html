@@ -1,1109 +1,1189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MayTax Inc | Professional Accounting & Tax Services</title>
-    <meta name="description" content="Expert accounting and tax services in Fair Lawn, NJ. Over 25 years of experience helping businesses achieve financial success.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --gold: #B8860B;
-            --gold-dark: #9A7209;
-            --dark: #2C2C2C;
-            --dark-light: #3A3A3A;
-            --text-light: #666666;
-            --border: #D4D4D4;
-            --white: #FFFFFF;
-            --light-bg: #F5F5F5;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Lato', sans-serif;
-            color: var(--dark);
-            line-height: 1.6;
-        }
-
-        /* Top Bar */
-        .top-bar {
-            background: var(--white);
-            border-bottom: 1px solid var(--border);
-            padding: 0.8rem 0;
-        }
-
-        .top-bar-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--dark);
-        }
-
-        .logo span {
-            color: var(--gold);
-        }
-
-        .top-contacts {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .top-contacts a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .top-contacts a:hover {
-            color: var(--gold);
-        }
-
-        /* Navigation */
-        nav {
-            background: var(--dark);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            padding: 1.2rem 1.5rem;
-            display: block;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: background 0.3s ease;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            background: var(--dark-light);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 600px;
-            background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%232C2C2C" width="1200" height="600"/><text x="50%" y="45%" fill="%23666" font-size="32" text-anchor="middle" dominant-baseline="middle" opacity="0.4">Expert Accounting %26 Tax Services</text><text x="50%" y="55%" fill="%23888" font-size="20" text-anchor="middle" dominant-baseline="middle" opacity="0.3">Trusted Financial Partners in Fair Lawn, NJ</text></svg>');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
-        .hero-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            width: 100%;
-        }
-
-        .hero-content {
-            max-width: 600px;
-        }
-
-        .hero-content h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 4rem;
-            color: var(--white);
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-content .subtitle {
-            font-size: 1.5rem;
-            color: var(--white);
-            font-weight: 300;
-            margin-bottom: 2rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .hero-btn {
-            background: var(--gold);
-            color: var(--white);
-            padding: 1rem 3rem;
-            text-decoration: none;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        .hero-btn:hover {
-            background: var(--gold-dark);
-        }
-
-        /* Consultation Form in Hero */
-        .hero-form {
-            position: absolute;
-            bottom: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            padding: 2rem;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-            width: 90%;
-            max-width: 1200px;
-        }
-
-        .hero-form h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            align-items: end;
-        }
-
-        .form-row input {
-            padding: 0.8rem;
-            border: 1px solid var(--border);
-            font-family: 'Lato', sans-serif;
-            font-size: 0.9rem;
-        }
-
-        .form-row input:focus {
-            outline: none;
-            border-color: var(--gold);
-        }
-
-        .form-row button {
-            background: var(--gold);
-            color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .form-row button:hover {
-            background: var(--gold-dark);
-        }
-
-        /* About Section */
-        .about {
-            padding: 8rem 2rem 6rem;
-            background: var(--white);
-        }
-
-        .about-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-image {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(rgba(184, 134, 11, 0.15), rgba(184, 134, 11, 0.15)),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400"><rect fill="%23E8E8E8" width="600" height="400"/><text x="50%" y="40%" fill="%23666" font-size="20" text-anchor="middle" dominant-baseline="middle">MayTax Inc</text><text x="50%" y="50%" fill="%23888" font-size="16" text-anchor="middle" dominant-baseline="middle">Professional CPA Team</text><text x="50%" y="60%" fill="%23AAA" font-size="14" text-anchor="middle" dominant-baseline="middle">Serving Fair Lawn, NJ</text></svg>');
-            background-size: cover;
-            background-position: center;
-            border-radius: 8px;
-        }
-
-        .about-content h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 1rem;
-        }
-
-        .about-content h3 {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            font-weight: 400;
-        }
-
-        .about-content p {
-            color: var(--text-light);
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .about-content .contact-info {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .about-content .contact-info p {
-            color: var(--dark);
-            font-weight: 700;
-        }
-
-        .about-content .contact-info a {
-            color: var(--gold);
-            text-decoration: none;
-        }
-
-        /* Services Section */
-        .services {
-            padding: 6rem 2rem;
-            background: var(--dark);
-            color: var(--white);
-        }
-
-        .services-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .services-header .label {
-            color: var(--gold);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .services-header h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            color: var(--white);
-        }
-
-        .services-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .service-card {
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            padding: 3rem 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover {
-            border-color: var(--gold);
-            background: rgba(184, 134, 11, 0.05);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: var(--gold);
-        }
-
-        .service-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-            color: var(--white);
-        }
-
-        .service-card p {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.8;
-            font-size: 0.95rem;
-        }
-
-        /* Industry Section */
-        .industry {
-            padding: 6rem 2rem;
-            background: #1a2332;
-            text-align: center;
-        }
-
-        .industry-header {
-            max-width: 900px;
-            margin: 0 auto 4rem;
-        }
-
-        .industry-label {
-            color: var(--gold);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .industry-header h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
-            color: var(--white);
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            font-weight: 600;
-        }
-
-        .industry-description {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.8;
-            margin: 0;
-            font-size: 1.05rem;
-        }
-
-        .industry-grid {
-            max-width: 1200px;
-            margin: 0 auto 3rem;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-        }
-
-        .industry-card {
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 3rem 2rem;
-            border-radius: 0;
-            transition: all 0.3s ease;
-            background: transparent;
-        }
-
-        .industry-card:hover {
-            border-color: var(--gold);
-            background: rgba(184, 134, 11, 0.05);
-        }
-
-        .industry-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            filter: sepia(100%) saturate(300%) brightness(120%) hue-rotate(5deg);
-        }
-
-        .industry-card h3 {
-            color: var(--white);
-            font-size: 1.1rem;
-            font-weight: 400;
-            margin: 0;
-            font-family: 'Lato', sans-serif;
-        }
-
-        .industry-cta {
-            margin-top: 3rem;
-        }
-
-        .industry-btn {
-            background: transparent;
-            color: var(--gold);
-            border: 2px solid var(--gold);
-            padding: 0.9rem 3rem;
-            text-decoration: none;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        .industry-btn:hover {
-            background: var(--gold);
-            color: var(--dark);
-        }
-
-        /* Pricing Section */
-        .pricing {
-            padding: 6rem 2rem;
-            background: var(--white);
-        }
-
-        .pricing-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 4rem;
-        }
-
-        .pricing-header::before {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: var(--gold);
-            margin: 0 auto 2rem;
-        }
-
-        .pricing-header h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            color: var(--dark);
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .pricing-header p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            line-height: 1.8;
-        }
-
-        .pricing-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            align-items: start;
-        }
-
-        .pricing-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            padding: 2.5rem 2rem;
-            border-radius: 0;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .pricing-card:hover {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transform: translateY(-5px);
-        }
-
-        .pricing-card.featured {
-            background: #1a2332;
-            border: none;
-            padding: 3rem 2rem;
-            transform: scale(1.05);
-        }
-
-        .pricing-card.featured:hover {
-            transform: scale(1.05) translateY(-5px);
-        }
-
-        .pricing-badge {
-            background: var(--gold);
-            color: var(--white);
-            padding: 0.4rem 1rem;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-        }
-
-        .pricing-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .pricing-card.featured h3 {
-            color: var(--white);
-        }
-
-        .pricing-subtitle {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-        }
-
-        .pricing-card.featured .pricing-subtitle {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .pricing-price {
-            margin-bottom: 2rem;
-        }
-
-        .pricing-price .amount {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            line-height: 1;
-        }
-
-        .pricing-card.featured .pricing-price .amount {
-            color: var(--white);
-        }
-
-        .pricing-price .period {
-            font-size: 1.1rem;
-            color: var(--text-light);
-        }
-
-        .pricing-card.featured .pricing-price .period {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .pricing-features {
-            list-style: none;
-            margin-bottom: 2.5rem;
-        }
-
-        .pricing-features li {
-            padding: 0.8rem 0;
-            padding-left: 2rem;
-            position: relative;
-            color: var(--text-dark);
-            font-size: 0.95rem;
-        }
-
-        .pricing-card.featured .pricing-features li {
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .pricing-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--gold);
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .pricing-btn {
-            width: 100%;
-            padding: 1rem;
-            text-align: center;
-            text-decoration: none;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-            display: block;
-            transition: all 0.3s ease;
-            border: 2px solid var(--gold);
-            background: transparent;
-            color: var(--gold);
-        }
-
-        .pricing-btn:hover {
-            background: var(--gold);
-            color: var(--white);
-        }
-
-        .pricing-card.featured .pricing-btn {
-            background: var(--gold);
-            color: var(--white);
-            border: none;
-        }
-
-        .pricing-card.featured .pricing-btn:hover {
-            background: var(--gold-dark);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: rgba(255, 255, 255, 0.8);
-            padding: 4rem 2rem 2rem;
-        }
-
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 4rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-section h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            color: var(--white);
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .footer-section p,
-        .footer-section li {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.8;
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section a:hover {
-            color: var(--gold);
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 0.8rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            font-family: 'Lato', sans-serif;
-        }
-
-        .newsletter-form input::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .newsletter-form button {
-            background: var(--gold);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            text-transform: uppercase;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .newsletter-form button:hover {
-            background: var(--gold-dark);
-        }
-
-        .footer-bottom {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.85rem;
-        }
-
-        .footer-bottom a {
-            color: var(--gold);
-            text-decoration: none;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .about-container {
-                grid-template-columns: 1fr;
-            }
-
-            .industry-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .pricing-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .pricing-card.featured {
-                transform: scale(1);
-            }
-
-            .pricing-card.featured:hover {
-                transform: translateY(-5px);
-            }
-
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .form-row {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .form-row button {
-                grid-column: span 2;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .industry-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .industry-header h2 {
-                font-size: 2.2rem;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .form-row button {
-                grid-column: 1;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero-form {
-                position: relative;
-                bottom: 0;
-                transform: none;
-                margin-top: 2rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>May Tax Inc | Professional Accounting & Tax Services</title>
+  <meta
+    name="description"
+    content="Professional accounting, tax planning, bookkeeping, payroll, and business advisory services for individuals and businesses in Fair Lawn, NJ."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Lato:wght@300;400;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --gold: #b8860b;
+      --gold-dark: #976f08;
+      --charcoal: #232323;
+      --charcoal-2: #323232;
+      --text: #444;
+      --muted: #6e6e6e;
+      --border: #dfdfdf;
+      --white: #fff;
+      --soft: #f7f7f7;
+      --soft-2: #f3f1ec;
+      --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      --radius: 18px;
+      --max-width: 1280px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Lato", sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      background: var(--white);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(35, 35, 35, 0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 78px;
+      gap: 24px;
+    }
+
+    .logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      padding: 12px 16px;
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-radius: 999px;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold-dark);
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(25, 25, 25, 0.58), rgba(25, 25, 25, 0.58)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='900' viewBox='0 0 1600 900'%3E%3Crect fill='%23252525' width='1600' height='900'/%3E%3Crect x='120' y='120' width='1360' height='660' rx='24' fill='%23333333'/%3E%3Crect x='240' y='210' width='350' height='24' fill='%23555555'/%3E%3Crect x='240' y='260' width='540' height='18' fill='%23494949'/%3E%3Crect x='240' y='300' width='480' height='18' fill='%23494949'/%3E%3Crect x='980' y='210' width='260' height='320' rx='16' fill='%23404040'/%3E%3Crect x='1020' y='260' width='180' height='16' fill='%23606060'/%3E%3Crect x='1020' y='300' width='160' height='16' fill='%23606060'/%3E%3Crect x='1020' y='340' width='190' height='16' fill='%23606060'/%3E%3Crect x='1020' y='420' width='140' height='40' rx='8' fill='%23b8860b'/%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+      min-height: 720px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(0,0,0,0.18), rgba(0,0,0,0));
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 34px;
+      align-items: center;
+      padding: 72px 0;
+    }
+
+    .hero-copy {
+      color: var(--white);
+      max-width: 760px;
+    }
+
+    .hero-label {
+      display: inline-block;
+      background: rgba(184, 134, 11, 0.18);
+      color: #f4d37a;
+      border: 1px solid rgba(244, 211, 122, 0.3);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      margin-bottom: 18px;
+    }
+
+    .hero-copy h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(3.2rem, 7vw, 5.8rem);
+      line-height: 0.95;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .hero-copy .subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 620px;
+      margin-bottom: 26px;
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .hero-points span {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      color: rgba(255, 255, 255, 0.92);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .hero-form-wrap {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .hero-form {
+      width: 100%;
+      max-width: 430px;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .hero-form h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2rem;
+      color: var(--charcoal);
+      line-height: 1.05;
+      margin-bottom: 8px;
+    }
+
+    .hero-form p {
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-form form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-form input,
+    .hero-form textarea,
+    .hero-form select {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 15px;
+      font: inherit;
+      color: var(--charcoal);
+      background: #fff;
+      outline: none;
+    }
+
+    .hero-form input:focus,
+    .hero-form textarea:focus,
+    .hero-form select:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.12);
+    }
+
+    .hero-form button {
+      margin-top: 4px;
+      border: none;
+      cursor: pointer;
+      background: var(--charcoal);
+      color: var(--white);
+      border-radius: 999px;
+      padding: 15px 18px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .hero-form button:hover {
+      background: var(--charcoal-2);
+    }
+
+    /* Stats */
+    .stats {
+      margin-top: -54px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.4rem;
+      color: var(--charcoal);
+      margin-bottom: 6px;
+    }
+
+    .stat-card span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Sections */
+    section {
+      padding: 82px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 42px;
+    }
+
+    .section-label {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .section-header h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      line-height: 1.05;
+      color: var(--charcoal);
+      margin-bottom: 14px;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    /* Services */
+    .services {
+      background: var(--soft);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      background: var(--soft-2);
+      color: var(--gold-dark);
+      display: grid;
+      place-items: center;
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+    }
+
+    .service-card h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.7rem;
+      color: var(--charcoal);
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .service-card ul {
+      padding-left: 18px;
+      color: var(--text);
+    }
+
+    .service-card li + li {
+      margin-top: 8px;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .about-image {
+      min-height: 520px;
+      border-radius: 26px;
+      background:
+        linear-gradient(rgba(40, 40, 40, 0.18), rgba(40, 40, 40, 0.18)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900' viewBox='0 0 900 900'%3E%3Crect fill='%23ebe7df' width='900' height='900'/%3E%3Crect x='130' y='110' width='640' height='680' rx='24' fill='%23d9d1c3'/%3E%3Crect x='200' y='190' width='220' height='18' fill='%23b7aa93'/%3E%3Crect x='200' y='235' width='360' height='16' fill='%23c2b7a0'/%3E%3Crect x='200' y='275' width='310' height='16' fill='%23c2b7a0'/%3E%3Crect x='200' y='360' width='480' height='230' rx='16' fill='%23c9bda8'/%3E%3Crect x='230' y='405' width='160' height='14' fill='%23ac9b79'/%3E%3Crect x='230' y='445' width='220' height='14' fill='%23b7aa93'/%3E%3Crect x='230' y='485' width='260' height='14' fill='%23b7aa93'/%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .about-content h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      line-height: 1.05;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+    }
+
+    .about-content p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .about-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .about-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 14px 16px;
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .about-item strong {
+      color: var(--charcoal);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .about-check {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--white);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    /* Why Choose */
+    .why {
+      background: linear-gradient(180deg, #faf8f3 0%, #f3eee4 100%);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .why-card {
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .why-card h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.7rem;
+      color: var(--charcoal);
+      margin-bottom: 10px;
+    }
+
+    .why-card p {
+      color: var(--muted);
+    }
+
+    /* CTA */
+    .cta {
+      padding-top: 0;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #232323, #383838);
+      color: var(--white);
+      border-radius: 28px;
+      padding: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-box h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 3vw, 3rem);
+      line-height: 1.05;
+      margin-bottom: 10px;
+    }
+
+    .cta-box p {
+      color: rgba(255,255,255,0.84);
+      max-width: 700px;
+    }
+
+    /* Contact */
+    .contact {
+      background: var(--soft);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .contact-card,
+    .contact-form {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card h3,
+    .contact-form h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2rem;
+      color: var(--charcoal);
+      margin-bottom: 14px;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .contact-list div {
+      padding: 14px 16px;
+      background: var(--soft);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+
+    .contact-list strong {
+      display: block;
+      color: var(--charcoal);
+      margin-bottom: 4px;
+    }
+
+    .contact-form form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 15px;
+      font: inherit;
+      outline: none;
+    }
+
+    .contact-form textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.12);
+    }
+
+    .contact-form button {
+      border: none;
+      background: var(--gold);
+      color: var(--white);
+      border-radius: 999px;
+      padding: 15px 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .contact-form button:hover {
+      background: var(--gold-dark);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.8);
+      padding: 60px 0 26px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 28px;
+    }
+
+    .footer-brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2rem;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .footer-brand span {
+      color: var(--gold);
+    }
+
+    .footer-col h4 {
+      color: var(--white);
+      margin-bottom: 12px;
+      font-size: 1rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .footer-col p,
+    .footer-col li,
+    .footer-col a {
+      color: rgba(255,255,255,0.74);
+      font-size: 0.95rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 0.92rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .hero-inner,
+      .about-grid,
+      .contact-grid,
+      .footer-grid,
+      .services-grid,
+      .why-grid,
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-copy h1 {
+        max-width: 600px;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .nav {
+        flex-direction: column;
+        justify-content: center;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-inner,
+      .about-grid,
+      .contact-grid,
+      .footer-grid,
+      .services-grid,
+      .why-grid,
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-form-wrap {
+        justify-content: stretch;
+      }
+
+      .hero-form {
+        max-width: none;
+      }
+
+      .stats {
+        margin-top: 0;
+        padding-top: 0;
+      }
+
+      section {
+        padding: 68px 0;
+      }
+
+      .cta-box {
+        padding: 30px 24px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(var(--max-width), calc(100% - 24px));
+      }
+
+      .hero-copy h1 {
+        font-size: 3rem;
+      }
+
+      .hero-form,
+      .service-card,
+      .contact-card,
+      .contact-form,
+      .why-card {
+        padding: 22px;
+      }
+
+      .nav-links a {
+        padding: 10px 12px;
+        font-size: 0.82rem;
+      }
+
+      .logo {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="top-bar-container">
-            <div class="logo">May<span>Tax</span> Inc</div>
-            <div class="top-contacts">
-                <a href="tel:5551234567">📞 (555) 123-4567</a>
-                <a href="#contact">📅 Book Appointment</a>
-                <a href="#contact">📄 Send a File</a>
-                <a href="#contact">💳 Make a Payment</a>
-            </div>
-        </div>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#" class="logo">May<span>Tax</span> Inc</a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <ul class="nav-links">
-                <li><a href="#" class="active">HOME</a></li>
-                <li><a href="#services">ACCOUNTING SERVICES</a></li>
-                <li><a href="#industry">WHO WE SERVE</a></li>
-                <li><a href="#pricing">PRICING PACKAGES</a></li>
-                <li><a href="#about">ABOUT US</a></li>
-                <li><a href="#contact">FREE CONSULTATION</a></li>
-            </ul>
-        </div>
-    </nav>
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <span class="hero-label">Trusted Accounting & Tax Support</span>
+        <h1>Take Hold of Higher Profits</h1>
+        <p class="subtitle">
+          May Tax Inc provides accounting, tax planning, bookkeeping, payroll,
+          and advisory services for individuals and businesses that want clear guidance,
+          better organization, and long-term financial confidence.
+        </p>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Take Hold</h1>
-                <p class="subtitle">OF HIGHER PROFITS</p>
-                <a href="#contact" class="hero-btn">Learn More</a>
-            </div>
+        <div class="hero-points">
+          <span>Tax Preparation</span>
+          <span>Bookkeeping</span>
+          <span>Payroll Support</span>
+          <span>Business Advisory</span>
         </div>
 
-        <!-- Consultation Form -->
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">Request a Consultation</a>
+          <a href="#services" class="btn btn-secondary">View Services</a>
+        </div>
+      </div>
+
+      <div class="hero-form-wrap">
         <div class="hero-form">
-            <h3>Request a Free Consultation</h3>
-            <form class="form-row">
-                <input type="text" placeholder="Your Name" required>
-                <input type="tel" placeholder="Phone Number" required>
-                <input type="email" placeholder="Email Address" required>
-                <button type="submit">SUBMIT</button>
-            </form>
+          <h3>Request a Consultation</h3>
+          <p>
+            Fill out the form and someone from our team will reach out to discuss
+            your accounting or tax needs.
+          </p>
+
+          <form>
+            <input type="text" placeholder="Your Name" required />
+            <input type="tel" placeholder="Phone Number" required />
+            <input type="email" placeholder="Email Address" required />
+            <select>
+              <option value="">Select a Service</option>
+              <option>Tax Preparation</option>
+              <option>Bookkeeping</option>
+              <option>Payroll</option>
+              <option>Business Consulting</option>
+            </select>
+            <textarea placeholder="How can we help?"></textarea>
+            <button type="submit">Submit Request</button>
+          </form>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="about-container">
-            <div class="about-image"></div>
-            <div class="about-content">
-                <h2>CPA Accounting - Fair Lawn, NJ</h2>
-                <h3>Expert Financial Services for Your Business</h3>
-                <p>MayTax Inc is here to meet the accounting and tax needs of clients in the Fair Lawn, NJ area. We handle accounting, outsourced controller services, and tax planning for various small businesses to corporate firms. Regardless of the service you choose, rest assured that you will receive top-rated services every time. With all service levels, you'll surely receive guidance to help you increase your productivity and profitability.</p>
-                <p>Our CPA firm pledges focused customized services to help you find the best path for your future. Whatever your needs are, we have a qualified staff ready to deliver. In addition to accounting and tax planning and preparation, we can offer tax management and business and financial consulting. So, whether your accounting needs are large or small, we have the skills required to handle them. Don't let another day go by without doing yourself a favor and contacting a qualified financial guide.</p>
-                <div class="contact-info">
-                    <p>Get a handle on your personal or business accounting today by calling us now at <a href="tel:5551234567">(555) 123-4567</a> or go online to request a consultation to discover how we can help you achieve your financial success goals.</p>
-                </div>
-            </div>
+  <div class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <strong>25+ Years</strong>
+          <span>Experience supporting clients with accounting and tax matters.</span>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="services-header">
-            <span class="label">Over 25 Years of Experience</span>
-            <h2>Our Accounting Services</h2>
+        <div class="stat-card">
+          <strong>Business Focused</strong>
+          <span>Practical support for startups, small businesses, and established firms.</span>
         </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">📊</div>
-                <h3>Small Business Accounting</h3>
-                <p>Our specialty is helping small and mid-size businesses develop a functional, user-friendly accounting strategy for managing their accounting needs.</p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">📋</div>
-                <h3>Tax Planning</h3>
-                <p>We can illuminate the impact of your tax obligations, integrate risks and objectives, and develop a strategy for your business taxes.</p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">🎯</div>
-                <h3>Who We Serve</h3>
-                <p>Our years of experience enables us to provide you with accounting and tax strategies that are aligned with the needs of your business.</p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">💰</div>
-                <h3>Cash Flow Management</h3>
-                <p>We offer the reporting and accounting services to help you navigate financial obstacles and increase the profitability of your business.</p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">💼</div>
-                <h3>Business Consulting</h3>
-                <p>We'll supply the business concepts and financial insights that will inspire you to reach higher and be more successful.</p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">🏢</div>
-                <h3>Outsourced Controller</h3>
-                <p>We support businesses like yours by applying our knowledge and expertise of solid financial management with our outsourced controller services.</p>
-            </div>
+        <div class="stat-card">
+          <strong>Year-Round Help</strong>
+          <span>Guidance that goes beyond filing season and one-time tasks.</span>
         </div>
-    </section>
-
-    <!-- Industry Section -->
-    <section id="industry" class="industry">
-        <div class="industry-header">
-            <span class="industry-label">Serving Various Types of Businesses</span>
-            <h2>Accounting by Industry</h2>
-            <p class="industry-description">We support a wide range of industries with tailored bookkeeping, tax preparation, and advisory services. Our approach adapts to how you operate—so reporting and tax planning match your reality.</p>
+        <div class="stat-card">
+          <strong>Fair Lawn, NJ</strong>
+          <span>Local service with professional standards and responsive communication.</span>
         </div>
-        
-        <div class="industry-grid">
-            <div class="industry-card">
-                <div class="industry-icon">📋</div>
-                <h3>Small Businesses</h3>
+      </div>
+    </div>
+  </div>
+
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">What We Do</span>
+        <h2>Accounting Services Built Around Real Client Needs</h2>
+        <p>
+          Whether you need clean records, tax strategy, or dependable financial guidance,
+          our services are designed to keep you organized and moving forward.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <div class="service-icon">📊</div>
+          <h3>Small Business Accounting</h3>
+          <p>
+            A clean, functional accounting system makes better decisions easier.
+          </p>
+          <ul>
+            <li>Monthly bookkeeping</li>
+            <li>Financial reporting</li>
+            <li>Account reconciliation</li>
+            <li>General ledger cleanup</li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">📋</div>
+          <h3>Tax Planning & Preparation</h3>
+          <p>
+            Reduce surprises and make filing season feel more manageable with proactive support.
+          </p>
+          <ul>
+            <li>Individual tax returns</li>
+            <li>Business tax returns</li>
+            <li>Estimated taxes</li>
+            <li>Year-end planning</li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">💼</div>
+          <h3>Business Consulting</h3>
+          <p>
+            Financial insight that helps owners understand where they are and what comes next.
+          </p>
+          <ul>
+            <li>Cash flow guidance</li>
+            <li>Growth planning</li>
+            <li>Entity considerations</li>
+            <li>Financial decision support</li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">💰</div>
+          <h3>Cash Flow Management</h3>
+          <p>
+            Know what is coming in, what is going out, and where your pressure points are.
+          </p>
+          <ul>
+            <li>Expense review</li>
+            <li>Forecasting support</li>
+            <li>Margin visibility</li>
+            <li>Profitability guidance</li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">🧾</div>
+          <h3>Payroll Support</h3>
+          <p>
+            Reliable coordination and reporting support so payroll runs smoothly and accurately.
+          </p>
+          <ul>
+            <li>Payroll coordination</li>
+            <li>Compliance support</li>
+            <li>Reporting assistance</li>
+            <li>Employee payment organization</li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">🏢</div>
+          <h3>Outsourced Controller</h3>
+          <p>
+            Strategic support for businesses that need more oversight without a full internal team.
+          </p>
+          <ul>
+            <li>Management reporting</li>
+            <li>Financial process review</li>
+            <li>Internal structure support</li>
+            <li>Higher-level accounting guidance</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container about-grid">
+      <div class="about-image"></div>
+
+      <div class="about-content">
+        <span class="section-label">About May Tax Inc</span>
+        <h2>Professional Financial Guidance for Businesses and Individuals</h2>
+        <p>
+          May Tax Inc is here to meet the accounting and tax needs of clients in
+          Fair Lawn, NJ and surrounding areas. We help individuals and business owners
+          stay on top of bookkeeping, taxes, reporting, and financial planning with a
+          practical and dependable approach.
+        </p>
+        <p>
+          Our goal is to make financial management clearer, less stressful, and more useful.
+          Whether your needs are simple or more complex, you should have a firm that communicates
+          well, stays organized, and supports better decisions throughout the year.
+        </p>
+
+        <div class="about-list">
+          <div class="about-item">
+            <div class="about-check">✓</div>
+            <div>
+              <strong>Responsive communication</strong>
+              <span>Questions get answered clearly and promptly.</span>
             </div>
-            
-            <div class="industry-card">
-                <div class="industry-icon">🏥</div>
-                <h3>Healthcare</h3>
+          </div>
+
+          <div class="about-item">
+            <div class="about-check">✓</div>
+            <div>
+              <strong>Customized support</strong>
+              <span>Advice tailored to your business or personal financial situation.</span>
             </div>
-            
-            <div class="industry-card">
-                <div class="industry-icon">🏗️</div>
-                <h3>Construction</h3>
+          </div>
+
+          <div class="about-item">
+            <div class="about-check">✓</div>
+            <div>
+              <strong>Long-term value</strong>
+              <span>Support that extends beyond tax deadlines into year-round planning.</span>
             </div>
-            
-            <div class="industry-card">
-                <div class="industry-icon">🛒</div>
-                <h3>Retail & E-Commerce</h3>
-            </div>
-            
-            <div class="industry-card">
-                <div class="industry-icon">🏠</div>
-                <h3>Real Estate</h3>
-            </div>
-            
-            <div class="industry-card">
-                <div class="industry-icon">🍽️</div>
-                <h3>Restaurants & Food Service</h3>
-            </div>
-            
-            <div class="industry-card">
-                <div class="industry-icon">🚚</div>
-                <h3>Transportation & Logistics</h3>
-            </div>
-            
-            <div class="industry-card">
-                <div class="industry-icon">⚖️</div>
-                <h3>Legal & Professional Services</h3>
-            </div>
+          </div>
         </div>
-        
-        <div class="industry-cta">
-            <a href="#contact" class="industry-btn">Get Started</a>
-        </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing">
-        <div class="pricing-header">
-            <h2>Pricing Packages</h2>
-            <p>Transparent pricing with no hidden fees. Choose the plan that fits your needs.</p>
-        </div>
-        
-        <div class="pricing-grid">
-            <!-- Starter Package -->
-            <div class="pricing-card">
-                <h3>Starter</h3>
-                <p class="pricing-subtitle">For freelancers & sole proprietors</p>
-                <div class="pricing-price">
-                    <span class="amount">$150</span>
-                    <span class="period">/month</span>
-                </div>
-                <ul class="pricing-features">
-                    <li>Monthly bookkeeping</li>
-                    <li>Bank reconciliation</li>
-                    <li>Annual tax filing (1040/1099)</li>
-                    <li>Quarterly check-ins</li>
-                    <li>Email support</li>
-                </ul>
-                <a href="#contact" class="pricing-btn">Get Started</a>
-            </div>
+  <section id="why" class="why">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Why Clients Choose Us</span>
+        <h2>A Better Accounting Experience Starts With Clarity</h2>
+        <p>
+          Good accounting support should feel organized, straightforward, and genuinely helpful.
+        </p>
+      </div>
 
-            <!-- Growth Package (Featured) -->
-            <div class="pricing-card featured">
-                <span class="pricing-badge">Most Popular</span>
-                <h3>Growth</h3>
-                <p class="pricing-subtitle">For small businesses ready to scale</p>
-                <div class="pricing-price">
-                    <span class="amount">$350</span>
-                    <span class="period">/month</span>
-                </div>
-                <ul class="pricing-features">
-                    <li>Everything in Starter</li>
-                    <li>Payroll processing</li>
-                    <li>Sales tax filing</li>
-                    <li>Monthly financial reports</li>
-                    <li>Tax planning & strategy</li>
-                    <li>Dedicated accountant</li>
-                </ul>
-                <a href="#contact" class="pricing-btn">Get Started</a>
-            </div>
-
-            <!-- Premium Package -->
-            <div class="pricing-card">
-                <h3>Premium</h3>
-                <p class="pricing-subtitle">For established businesses needing full support</p>
-                <div class="pricing-price">
-                    <span class="amount">$650</span>
-                    <span class="period">/month</span>
-                </div>
-                <ul class="pricing-features">
-                    <li>Everything in Growth</li>
-                    <li>Outsourced controller services</li>
-                    <li>Cash flow forecasting</li>
-                    <li>Budget vs. actuals reporting</li>
-                    <li>Advisory & consulting calls</li>
-                    <li>Priority support</li>
-                </ul>
-                <a href="#contact" class="pricing-btn">Get Started</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>About</h3>
-                <p>MayTax Inc is a Piedmont Triad CPA accounting firm exclusively serving small businesses. We offer a full suite of audit, assurance, accounting, tax and controllership services for business owners who want experienced guidance and advice.</p>
-            </div>
-
-            <div class="footer-section">
-                <h3>Contact</h3>
-                <p>Reach out to us to learn more about our accounting and tax services.</p>
-                <ul>
-                    <li>📞 (555) 123-4567</li>
-                    <li>📍 123 Main Street, Suite 100<br>Fair Lawn, NJ 07410</li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Newsletter</h3>
-                <p>Sign up for our newsletter and be the first to learn about latest tax news.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Email address" required>
-                    <button type="submit">SUBMIT</button>
-                </form>
-            </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <h3>Clear Advice</h3>
+          <p>
+            We explain what matters in plain language, so you can make decisions with confidence.
+          </p>
         </div>
 
-        <div class="footer-bottom">
-            <p>&copy; 2026 MayTax Inc. All Rights Reserved | <a href="#">Privacy</a> | <a href="#">Home</a></p>
+        <div class="why-card">
+          <h3>Detail-Oriented Work</h3>
+          <p>
+            Careful review and organized systems help reduce mistakes and improve visibility.
+          </p>
         </div>
-    </footer>
 
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
+        <div class="why-card">
+          <h3>Trusted Partnership</h3>
+          <p>
+            We aim to be a reliable resource for ongoing financial questions, planning, and growth.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        // Form submission
-        document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Thank you! We will contact you shortly.');
-                this.reset();
-            });
-        });
+  <section class="cta">
+    <div class="container">
+      <div class="cta-box">
+        <div>
+          <h2>Need a Stronger Handle on Your Accounting or Taxes?</h2>
+          <p>
+            Let’s talk about what you need and build a smoother, more organized process for your finances.
+          </p>
+        </div>
+        <a href="#contact" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </section>
 
-        // Sticky nav shadow on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
-            } else {
-                nav.style.boxShadow = 'none';
-            }
-        });
-    </script>
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Contact Us</span>
+        <h2>Start the Conversation</h2>
+        <p>
+          Replace the placeholders below with your actual business contact information.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>May Tax Inc</h3>
+          <p>
+            Reach out to discuss tax preparation, accounting support, bookkeeping,
+            payroll, or advisory needs.
+          </p>
+
+          <div class="contact-list">
+            <div>
+              <strong>Phone</strong>
+              <span>(555) 123-4567</span>
+            </div>
+            <div>
+              <strong>Email</strong>
+              <span>info@maytaxinc.com</span>
+            </div>
+            <div>
+              <strong>Office</strong>
+              <span>123 Main Street, Suite 100, Fair Lawn, NJ 07410</span>
+            </div>
+            <div>
+              <strong>Hours</strong>
+              <span>Monday – Friday, 9:00 AM – 6:00 PM</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <h3>Send a Message</h3>
+          <form>
+            <input type="text" placeholder="Full Name" required />
+            <input type="email" placeholder="Email Address" required />
+            <input type="tel" placeholder="Phone Number" />
+            <textarea placeholder="Tell us what you need help with"></textarea>
+            <button type="submit">Submit Inquiry</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-brand">May<span>Tax</span> Inc</div>
+          <p>
+            Professional accounting and tax support for individuals and businesses
+            seeking reliable guidance, organized systems, and better financial clarity.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Tax Preparation</a></li>
+            <li><a href="#services">Bookkeeping</a></li>
+            <li><a href="#services">Payroll Support</a></li>
+            <li><a href="#services">Business Consulting</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li>(555) 123-4567</li>
+            <li>info@maytaxinc.com</li>
+            <li>123 Main Street, Suite 100</li>
+            <li>Fair Lawn, NJ 07410</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 May Tax Inc. All Rights Reserved.</span>
+        <span>Privacy Policy | Terms</span>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
